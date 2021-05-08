@@ -51,10 +51,11 @@ for nonce in range(d):
 
     
 
-
-page=requests.get("https://nomics.com/assets/gwei-gwei")
+epic="https://nomics.com/assets/gwei-gwei"
+page=requests.get(epic)
 pagetext=page.text
-gascost=pagetext[30635:30645]
+poscost=pagetext.find("$0.00000")
+gascost=pagetext[poscost+1:poscost+11]
 try:
     gascost=float(gascost)
 except:
@@ -67,8 +68,9 @@ except:
         
 gasusd=gastot*gascost
 
-print("\nTotal Transactions:", d)
+print("Total Transactions:", d)
 print("Actual gwei cost in USD: $",format(gascost,'.12f'))
 print("Total gas spent:", gastot, "( $",format(gasusd,'.2f'),")")
 
 input('')
+
