@@ -59,11 +59,11 @@ gascost=pagetext[poscost+1:poscost+11]
 try:
     gascost=float(gascost)
 except:
-    gascost=pagetext[30635:30644]
+    gascost=pagetext[poscost+1:poscost+10]
     try:
         gascost=float(gascost)
     except:
-        gascost=pagetext[30635:30643]
+        gascost=pagetext[poscost+1:poscost+9]
         gascost=float(gascost)
         
 gasusd=gastot*gascost
